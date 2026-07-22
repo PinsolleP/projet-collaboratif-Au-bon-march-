@@ -78,7 +78,7 @@ class Clients:
 
 
 class Warehouse:
-    def __init__(self, product: Products, client: Clients):
+    def __init__(self):
         self.product = []
         self.client = []
 
