@@ -12,7 +12,7 @@ class Products:
         self.stock -= nb_article
         return self.stock
 
-    def display_product(self):
+    def dissplay_product(self):
         print(
             f"L'article {self.name} existant en {self.stock} exemplaire(s) coute {self.price} / {self.unity}")
 
@@ -34,7 +34,7 @@ class Shoppingcartline(Products):
     def display_line(self):
         return f"{self.product.name} x {self.quantity} = {self.total_price_line():} €"
 
-    
+
 class Shoppingcart:
     """Classe représentant un panier d'achat."""
 
@@ -76,4 +76,10 @@ class Clients(Shoppingcart):
         self.basket.display_lines()
         print(f"Total : {self.get_total()} €")
 
+
+class Store(Products, Clients):
+    def __init__(self, product: Products, name, type_product, price, stok, unity, client: Clients, first_name, surname):
+        super().__init__(name, type_product, price, stok, unity, first_name, surname)
+        self.product = product
+        self.client = client
 
