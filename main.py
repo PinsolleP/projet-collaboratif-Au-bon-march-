@@ -4,7 +4,7 @@ if __name__ == "__main__":
     end_day = False
     finish_purchase = False
     while finish_purchase is False and end_day is False:
-        Clients.first_name = input("Entrer votre prénom ")
+        Clients.first_name = input("Entrer votre prénom: ")
         Clients.last_name = input("Entrer votre nom: ")
         for product in store:
             Products.display_product(product)
