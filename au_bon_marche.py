@@ -11,7 +11,8 @@ class Products:
 class Shoppingcartline(Products):
     """Représente une ligne dans le panier (produit + quantité)."""
 
-    def __init__(self, product: Products, quantity):
+    def __init__(self, product: Products, quantity, name, type_product, price, stock, unity):
+        super().__init__(name, type_product, price, stock, unity)
         self.product = product
         self.quantity = quantity if quantity > 0 else 1
 
@@ -21,8 +22,6 @@ class Shoppingcartline(Products):
 
     def display_line(self):
         return f"{self.product.name} x {self.quantity} = {self.total_price_line():} €"
-
-    
 
 
 class Shoppingcart:
