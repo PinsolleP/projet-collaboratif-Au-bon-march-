@@ -41,7 +41,7 @@ class Shoppingcart:
     def __init__(self):
         self.lines = []
 
-    def add_product(self, product, quantity):
+    def add_line(self, product, quantity):
         """Ajoute un produit ou augmente la quantité s'il est déjà présent."""
         for line in self.lines:
             if line.product.name == product.name:
