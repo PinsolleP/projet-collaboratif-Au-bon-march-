@@ -41,7 +41,7 @@ class Shoppingcart:
     def __init__(self):
         self.lines = []
 
-    def add_product(self, product, quantity):
+    def add_line(self, product, quantity):
         """Ajoute un produit ou augmente la quantité s'il est déjà présent."""
         for line in self.lines:
             if line.product.name == product.name:
@@ -77,8 +77,8 @@ class Clients:
         print(f"Total : {self.get_total()} €")
 
 
-class Store:
-    def __init__(self, product: Products, client: Clients):
+class Warehouse:
+    def __init__(self):
         self.product = []
         self.client = []
 
