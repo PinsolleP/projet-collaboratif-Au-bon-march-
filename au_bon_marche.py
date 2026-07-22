@@ -77,7 +77,7 @@ class Clients:
         print(f"Total : {self.get_total()} €")
 
 
-class Store:
+class Warehouse:
     def __init__(self, product: Products, client: Clients):
         self.product = []
         self.client = []
