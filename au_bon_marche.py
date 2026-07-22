@@ -61,7 +61,7 @@ class Shoppingcart:
         return sum(line.total_price_line() for line in self.lines)
 
 
-class Clients(Shoppingcart):
+class Clients:
 
     def __init__(self, surname, first_name):
         self.surname = surname
@@ -77,9 +77,17 @@ class Clients(Shoppingcart):
         print(f"Total : {self.get_total()} €")
 
 
-class Store(Products, Clients):
-    def __init__(self, product: Products, name, type_product, price, stok, unity, client: Clients, first_name, surname):
-        super().__init__(name, type_product, price, stok, unity, first_name, surname)
-        self.product = product
-        self.client = client
+class Store:
+    def __init__(self):
+        self.products = []
+        self.clients = []
+
+    def add_client(self, client):
+        self.clients.append(client)
+
+    def add_products(self, products):
+        self.products.append(products)
+
+    def day_summary(self):
+        
 
