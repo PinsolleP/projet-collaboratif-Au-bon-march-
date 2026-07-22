@@ -18,4 +18,7 @@ class Shoppingcartline(Products):
     def total_price_line(self) -> float:
         """Retourne le prix total pour cette ligne."""
         return self.name.price * self.quantity
-     
+
+    def display_line(self):
+        return f"{self.name.name} x {self.quantity} = {self.total_price_line():} €"
+
