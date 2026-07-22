@@ -1,9 +1,9 @@
 class Products:
 
-    def __init__(self, name, type, price, stock, unity):
+    def __init__(self, name, type_product, price, stock, unity):
         self.name = name
         self.price = price
-        self.type = type
+        self.type_product = type_product
         self.stock = stock
         self.unity = unity
 
@@ -21,6 +21,8 @@ class Shoppingcartline(Products):
 
     def display_line(self):
         return f"{self.product.name} x {self.quantity} = {self.total_price_line():} €"
+
+    
 
 
 class Shoppingcart:
