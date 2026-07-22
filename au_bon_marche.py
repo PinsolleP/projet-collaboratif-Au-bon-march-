@@ -12,7 +12,7 @@ class Products:
         self.stock -= nb_article
         return self.stock
 
-    def dissplay_product(self):
+    def display_product(self):
         print(
             f"L'article {self.name} existant en {self.stock} exemplaire(s) coute {self.price} / {self.unity}")
 
@@ -47,7 +47,7 @@ class Shoppingcart:
             if line.product.name == product.name:
                 line.quantity += quantity if quantity > 0 else 1
                 return
-            self.lines.append(Shoppingcartline(product, quantity))
+            self.lines.append(Shoppingcartline)
 
     def display_lines(self):
         if not self.lines:
@@ -61,7 +61,7 @@ class Shoppingcart:
         return sum(line.total_price_line() for line in self.lines)
 
 
-class Clients(Shoppingcart):
+class Clients:
 
     def __init__(self, surname, first_name):
         self.surname = surname
@@ -96,4 +96,3 @@ class Store:
         print("stock restant :")
         for product in self.product:
             print(f"{product.name} : {product.stock} : {product.unity}")
-
