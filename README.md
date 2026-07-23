@@ -31,7 +31,7 @@ Le simulateur permet de :
 
 -arrêter de faire des courses selon l'envie
 
--arrêter de faire des courses selon le moment de la journer
+-arrêter de faire des courses selon le moment de la journée
 
 -afficher le bilan de la journée à la fin de la journée
 
