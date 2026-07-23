@@ -6,22 +6,18 @@ class Products:
         self.stock = stock
         self.unity = unity
 
-    def decrease_stock(self):
-        nb_article = Shoppingcartline.quantity
-        self.stock -= nb_article
+    def decrease_stock(self, quantity):
+        self.stock -= quantity
         return self.stock
 
     def display_product(self):
         return f"L'article {self.name} existant en {self.stock} exemplaire(s) coute {self.price} / {self.unity}"
 
 
-class Shoppingcartline(Products):
+class Shoppingcartline:
     """Représente une ligne dans le panier (produit + quantité)."""
 
-    quantity = None
-
-    def __init__(self, product: Products, quantity, name, price, stock, unity):
-        super().__init__(name, price, stock, unity)
+    def __init__(self, product: Products, quantity):
         self.product = product
         self.quantity = quantity if quantity > 0 else 1
 
@@ -45,7 +41,7 @@ class Shoppingcart:
             if line.product.name == product.name:
                 line.quantity += quantity if quantity > 0 else 1
                 return
-        self.lines.append(Shoppingcartline)
+        self.lines.append(Shoppingcartline(product, quantity))
 
     def display_lines(self):
         if not self.lines:
@@ -77,25 +73,25 @@ class Clients:
 
 class Warehouse:
     def __init__(self):
-        self.product = []
-        self.client = []
+        self.products = []
+        self.clients = []
 
     def add_client(self, client):
-        self.client.append(client)
+        self.clients.append(client)
 
     def add_product(self, product):
-        self.product.append(product)
+        self.products.append(product)
 
     def display_products(self):
         print("=====STOCK DU MAGASIN=====")
-        for i in self.product:
+        for i in self.products:
             print(i.name, i.price, i.unity)
 
     def day_summary(self):
-        print("Bilan de la journée :", len(self.client))
-        for client in self.client:
-            print(f"{client.first_name} , {client.surname} : {client.get_total} €")
+        print("Bilan de la journée :", len(self.clients))
+        for client in self.clients:
+            print(f"{client.first_name} , {client.surname} : {client.get_total()} €")
 
         print("stock restant :")
-        for product in self.product:
+        for product in self.products:
             print(f"{product.name} : {product.stock} : {product.unity}")
