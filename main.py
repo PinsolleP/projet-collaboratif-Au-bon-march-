@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
-
 from au_bon_marche import *
 
 
@@ -35,15 +33,18 @@ def store():
 
     return warehouse
 
+
 if __name__ == "__main__":
     end_day = False
     finish_purchase = False
-    while finish_purchase is False and end_day is False:
-        Clients.first_name = input("Entrer votre prénom: ")
-        Clients.last_name = input("Entrer votre nom: ")
-        for product in store:
-            Products.display_product(product)
-        client_purchase = input("Que voulez vous acheter ? ")
-        client_quantity = int(input("Combien en voulez vous ? "))
-        Shoppingcart.add_line(store, client_purchase, client_quantity)
+    while not end_day:
+        first_name = input("Entrer votre prénom: ")
+        last_name = input("Entrer votre nom: ")
+        client = Clients(first_name, last_name)
+        while not finish_purchase:
+            for product in store():
+                Warehouse.display_products(product)
+            client_purchase = input("Que voulez vous acheter ? ")
+            client_quantity = int(input("Combien en voulez vous ? "))
+            Shoppingcart.add_line(store, client_purchase, client_quantity)
 
