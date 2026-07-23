@@ -12,8 +12,7 @@ class Products:
         return self.stock
 
     def display_product(self):
-        print(
-            f"L'article {self.name} existant en {self.stock} exemplaire(s) coute {self.price} / {self.unity}")
+        return f"L'article {self.name} existant en {self.stock} exemplaire(s) coute {self.price} / {self.unity}"
 
 
 class Shoppingcartline(Products):
@@ -86,6 +85,11 @@ class Warehouse:
 
     def add_product(self, product):
         self.product.append(product)
+
+    def display_products(self):
+        print("=====STOCK DU MAGASIN=====")
+        for i in self.product:
+            print(i.name, i.price, i.unity)
 
     def day_summary(self):
         print("Bilan de la journée :", len(self.client))
