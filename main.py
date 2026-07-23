@@ -35,16 +35,23 @@ def store():
 
 
 if __name__ == "__main__":
+    warehouse = store()
     end_day = False
     finish_purchase = False
     while not end_day:
         first_name = input("Entrer votre prénom: ")
         last_name = input("Entrer votre nom: ")
         client = Clients(first_name, last_name)
+        for product in Warehouse.display_products(store()):
+            Warehouse.display_products(product)
+        shoppingcart = Shoppingcart
         while not finish_purchase:
-            for product in store():
-                Warehouse.display_products(product)
             client_purchase = input("Que voulez vous acheter ? ")
             client_quantity = int(input("Combien en voulez vous ? "))
-            Shoppingcart.add_line(store, client_purchase, client_quantity)
+            Shoppingcart.add_line(shoppingcart(), client_purchase, client_quantity)
+            answer_user = input("Avez-vous fini ? (o/n) ")
+            if answer_user == "o":
+                finish_purchase = True
+
+
 
