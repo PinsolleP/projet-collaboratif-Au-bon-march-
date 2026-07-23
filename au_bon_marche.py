@@ -1,5 +1,4 @@
 class Products:
-    """Représente un produit vendu dans le magasin."""
 
     def __init__(self, name, price, stock, unity):
         """Initialise un produit.
@@ -45,8 +44,7 @@ class Shoppingcartline:
 
     def total_price_line(self) -> float:
         """Retourne le prix total pour cette ligne."""
-
-        return round((self.product.price * self.quantity), 2)
+        return round((self.product.price * self.quantity),2)
 
     def display_line(self):
         """Affichage de la ligne du produit."""
@@ -141,7 +139,7 @@ class Warehouse:
 
     def day_summary(self):
         """Affiche le bilan de la journée : clients, chiffre d'affaires et stock restant."""
-        
+
         print("=====Bilan de la journée===== :")
         print(len(self.clients), " clients")
         for client in self.clients:
