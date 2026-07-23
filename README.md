@@ -4,8 +4,11 @@ Projet réalisé en collaboration avec Lucas Pillon permettant de simuler l'acti
 # objectif
 
 Ce projet a été réalisé afin de mettre en pratique les notions suivantes :
+
 -le développement python orienté objet
+
 -le trvail d'équipe
+
 -l'utilisation de git et de github en groupe
 
 # règle du jeu
@@ -22,10 +25,14 @@ Le bilan de la journée permet quant à lui d’afficher la liste des clients, l
 
 Le simulateur permet de :
 
--choisir un nom et un prénom
+choisir un nom et un prénom
+
 -choisir le produit que l'on veut acheter et quelle quantité
+
 -arrêter de faire des courses selon l'envie
+
 -arrêter de faire des courses selon le moment de la journer
+
 -afficher le bilan de la journée à la fin de la journée
 
 # technologies utilisées
