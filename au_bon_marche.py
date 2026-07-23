@@ -1,9 +1,8 @@
 class Products:
 
-    def __init__(self, name, type_product, price, stock, unity):
+    def __init__(self, name, price, stock, unity):
         self.name = name
         self.price = price
-        self.type_product = type_product
         self.stock = stock
         self.unity = unity
 
@@ -22,8 +21,8 @@ class Shoppingcartline(Products):
 
     quantity = None
 
-    def __init__(self, product: Products, quantity, name, type_product, price, stock, unity):
-        super().__init__(name, type_product, price, stock, unity)
+    def __init__(self, product: Products, quantity, name, price, stock, unity):
+        super().__init__(name, price, stock, unity)
         self.product = product
         self.quantity = quantity if quantity > 0 else 1
 
