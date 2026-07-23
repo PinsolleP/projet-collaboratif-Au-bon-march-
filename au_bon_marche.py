@@ -45,7 +45,7 @@ class Shoppingcart:
             if line.product.name == product.name:
                 line.quantity += quantity if quantity > 0 else 1
                 return
-            self.lines.append(Shoppingcartline)
+        self.lines.append(Shoppingcartline)
 
     def display_lines(self):
         if not self.lines:
