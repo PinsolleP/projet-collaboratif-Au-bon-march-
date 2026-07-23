@@ -28,12 +28,12 @@ def store():
         ["Radis noir", 5.00, 10, "pièce"],
         ["Salsifis", 2.50, 3, "kg"],
     ]
-    storage = Warehouse()
+    warehouse = Warehouse()
 
     for item in stock_initial:
-        storage.add_product(Products(*item))
+        warehouse.add_product(product(*item))
 
-    return storage
+    return warehouse
 
 if __name__ == "__main__":
     end_day = False
