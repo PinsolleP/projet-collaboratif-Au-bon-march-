@@ -101,4 +101,4 @@ class Warehouse:
 
         print("stock restant :")
         for product in self.products:
-            print(f"{product.name} : {product.stock}  {product.unity}")
+            print(f"{product.name} : {round(product.stock, 2)}  {product.unity}")
