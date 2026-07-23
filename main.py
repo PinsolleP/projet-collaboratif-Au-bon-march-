@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from au_bon_marche import *
+import au_bon_marche
 
 
 def store():
@@ -26,32 +26,47 @@ def store():
         ["Radis noir", 5.00, 10, "pièce"],
         ["Salsifis", 2.50, 3, "kg"],
     ]
-    warehouse = Warehouse()
+    storage = au_bon_marche.Warehouse()
 
     for item in stock_initial:
-        warehouse.add_product(product(*item))
+        storage.add_product(au_bon_marche.Products(*item))
 
-    return warehouse
+    return storage
 
 
 if __name__ == "__main__":
     warehouse = store()
     end_day = False
-    finish_purchase = False
+
     while not end_day:
         first_name = input("Entrer votre prénom: ")
         last_name = input("Entrer votre nom: ")
-        client = Clients(first_name, last_name)
-        for product in Warehouse.display_products(store()):
-            Warehouse.display_products(product)
-        shoppingcart = Shoppingcart
+        client = au_bon_marche.Clients(last_name, first_name)
+        finish_purchase = False
         while not finish_purchase:
+            warehouse.display_products()
             client_purchase = input("Que voulez vous acheter ? ")
-            client_quantity = int(input("Combien en voulez vous ? "))
-            Shoppingcart.add_line(shoppingcart(), client_purchase, client_quantity)
+            selected_product = None
+            for products in warehouse.products:
+                if products.name.lower() == client_purchase.lower():
+                    selected_product = products
+                    break
+            if selected_product is None:
+                print("Produit inconnu")
+            else:
+                quantity = int(input("Combien en voulez vous ? "))
+                if quantity <= selected_product.stock:
+                    client.basket.add_line(selected_product, quantity)
+                    selected_product.decrease_stock(quantity)
+                    print("Produit ajouté au panier")
+                    if selected_product.stock == 0:
+                        warehouse.products.remove(selected_product)
+                        print("Ce produit n'est plus en stock")
+                else:
+                    print("Stock insuffisant")
+
             answer_user = input("Avez-vous fini ? (o/n) ")
             if answer_user == "o":
+                client.basket.display_lines()
                 finish_purchase = True
-
-
-
+        
