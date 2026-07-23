@@ -28,7 +28,7 @@ class Shoppingcartline:
 
     def total_price_line(self) -> float:
         """Retourne le prix total pour cette ligne."""
-        return self.product.price * self.quantity
+        return round((self.product.price * self.quantity),2)
 
     def display_line(self):
         return f"{self.product.name} x {self.quantity} = {self.total_price_line():} €"
@@ -93,10 +93,12 @@ class Warehouse:
             print(f"{i.name} {i.price} €/{i.unity}")
 
     def day_summary(self):
-        print("Bilan de la journée :", len(self.clients))
+        print("=====Bilan de la journée===== :")
+        print(len(self.clients), " clients")
         for client in self.clients:
             print(f"{client.first_name} , {client.surname} : {client.get_total()} €")
+        print("total de la journée :", sum(client.get_total() for client in self.clients), "€")
 
         print("stock restant :")
         for product in self.products:
-            print(f"{product.name} : {product.stock} : {product.unity}")
+            print(f"{product.name} : {product.stock}  {product.unity}")
