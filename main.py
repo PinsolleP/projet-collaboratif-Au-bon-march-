@@ -54,7 +54,7 @@ if __name__ == "__main__":
             if selected_product is None:
                 print("Produit inconnu")
             else:
-                quantity = int(input("Combien en voulez vous ? "))
+                quantity = float(input("Combien en voulez vous ? "))
                 if quantity <= selected_product.stock:
                     client.basket.add_line(selected_product, quantity)
                     selected_product.decrease_stock(quantity)
@@ -69,4 +69,8 @@ if __name__ == "__main__":
             if answer_user == "o":
                 client.basket.display_lines()
                 finish_purchase = True
-
+                warehouse.add_client(client)
+        end = input("Est-ce la fin de la journer ? (o/n) ")
+        if end == "o":
+            warehouse.day_summary()
+            end_day = True
