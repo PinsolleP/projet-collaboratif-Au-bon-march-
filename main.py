@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
-from au_bon_marche import *
+import au_bon_marche
 
 
 def store():
@@ -27,12 +26,12 @@ def store():
         ["Radis noir", 5.00, 10, "pièce"],
         ["Salsifis", 2.50, 3, "kg"],
     ]
-    warehouse = Warehouse()
+    storage = au_bon_marche.Warehouse()
 
     for item in stock_initial:
-        warehouse.add_product(Products(*item))
+        storage.add_product(au_bon_marche.Products(*item))
 
-    return warehouse
+    return storage
 
 
 if __name__ == "__main__":
@@ -42,7 +41,7 @@ if __name__ == "__main__":
     while not end_day:
         first_name = input("Entrer votre prénom: ")
         last_name = input("Entrer votre nom: ")
-        client = Clients(last_name, first_name)
+        client = au_bon_marche.Clients(last_name, first_name)
         finish_purchase = False
         while not finish_purchase:
             warehouse.display_products()
@@ -60,10 +59,14 @@ if __name__ == "__main__":
                     client.basket.add_line(selected_product, quantity)
                     selected_product.decrease_stock(quantity)
                     print("Produit ajouté au panier")
+                    if selected_product.stock == 0:
+                        warehouse.products.remove(selected_product)
+                        print("Ce produit n'est plus en stock")
                 else:
                     print("Stock insuffisant")
 
-                answer = input("Terminer les achats ? (o/n)")
-                if answer.lower == "0":
-                    finish_purchase = True
+            answer_user = input("Avez-vous fini ? (o/n) ")
+            if answer_user == "o":
+                client.basket.display_lines()
+                finish_purchase = True
 
