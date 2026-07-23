@@ -1,7 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
-
 from au_bon_marche import *
 
 
@@ -34,6 +32,7 @@ def store():
         storage.add_product(Products(*item))
 
     return storage
+
 
 if __name__ == "__main__":
     end_day = False
