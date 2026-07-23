@@ -37,10 +37,11 @@ def store():
 if __name__ == "__main__":
     warehouse = store()
     end_day = False
+    print("=====Bienvenue au bon marché=====")
 
     while not end_day:
-        first_name = input("Entrer votre prénom: ")
-        last_name = input("Entrer votre nom: ")
+        first_name = input("Entrer votre prénom:")
+        last_name = input("Entrer votre nom:")
         client = au_bon_marche.Clients(last_name, first_name)
         finish_purchase = False
         while not finish_purchase:
@@ -73,7 +74,7 @@ if __name__ == "__main__":
                 client.basket.display_lines()
                 finish_purchase = True
                 warehouse.add_client(client)
-        end = input("Est-ce la fin de la journer ? (o/n) ")
+        end = input("Est-ce la fin de la journée ? (o/n) ")
         if end == "o":
             warehouse.day_summary()
             end_day = True
