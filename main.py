@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""import de toutes les classes de au_bon_marche"""
 import au_bon_marche
 
 
 def store():
+    """permet d'initialiser le stock"""
     stock_initial = [
         ["Clémentine", 2.90, 6, "kg"],
         ["Datte", 7.00, 4, "kg"],
@@ -35,6 +37,25 @@ def store():
 
 
 if __name__ == "__main__":
+    """
+    Point d'entrée du programme de gestion du magasin "Au Bon Marché".
+
+    Cette partie du programme permet de simuler une journée de vente en magasin.
+
+    Fonctionnement :
+        - Initialise le magasin et son stock.
+        - Accueille successivement plusieurs clients.
+        - Demande le prénom et le nom de chaque client.
+        - Affiche les produits disponibles.
+        - Permet au client de sélectionner un produit et une quantité.
+        - Vérifie que le produit existe et que la quantité demandée est valide.
+        - Ajoute le produit au panier si le stock est suffisant.
+        - Met à jour le stock et retire le produit de la liste lorsqu'il est épuisé.
+        - Répète les achats jusqu'à ce que le client ait terminé.
+        - Affiche le ticket de caisse du client et enregistre celui-ci dans le magasin.
+        - Répète le processus pour les clients suivants jusqu'à la fin de la journée.
+        - Affiche enfin un récapitulatif de la journée.
+    """
     warehouse = store()
     end_day = False
     print("=====Bienvenue au bon marché=====")
