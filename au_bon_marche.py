@@ -85,7 +85,7 @@ class Warehouse:
     def display_products(self):
         print("=====STOCK DU MAGASIN=====")
         for i in self.products:
-            print(i.name, i.price, i.unity)
+            print(f"{i.name} {i.price} €/{i.unity}")
 
     def day_summary(self):
         print("Bilan de la journée :", len(self.clients))
