@@ -25,7 +25,7 @@ Le bilan de la journée permet quant à lui d’afficher la liste des clients, l
 
 Le simulateur permet de :
 
-choisir un nom et un prénom
+-choisir un nom et un prénom
 
 -choisir le produit que l'on veut acheter et quelle quantité
 
