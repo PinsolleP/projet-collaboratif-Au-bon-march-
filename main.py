@@ -39,10 +39,11 @@ if __name__ == "__main__":
     end_day = False
 
     while not end_day:
-        first_name = input("Entrer votre prénom: ")
-        last_name = input("Entrer votre nom: ")
+        first_name = input("Entrer votre prénom:")
+        last_name = input("Entrer votre nom:")
         client = au_bon_marche.Clients(last_name, first_name)
         finish_purchase = False
+
         while not finish_purchase:
             warehouse.display_products()
             client_purchase = input("Que voulez vous acheter ? ")
@@ -54,16 +55,19 @@ if __name__ == "__main__":
             if selected_product is None:
                 print("Produit inconnu")
             else:
-                quantity = int(input("Combien en voulez vous ? "))
-                if quantity <= selected_product.stock:
-                    client.basket.add_line(selected_product, quantity)
-                    selected_product.decrease_stock(quantity)
-                    print("Produit ajouté au panier")
-                    if selected_product.stock == 0:
-                        warehouse.products.remove(selected_product)
-                        print("Ce produit n'est plus en stock")
+                quantity = float(input("Combien en voulez vous ? "))
+                if not selected_product.check_quantity(quantity):
+                    print("Quantité invalide pour ce produit")
                 else:
-                    print("Stock insuffisant")
+                    if quantity <= selected_product.stock:
+                        client.basket.add_line(selected_product, quantity)
+                        selected_product.decrease_stock(quantity)
+                        print("Produit ajouté au panier")
+                        if selected_product.stock == 0:
+                            warehouse.products.remove(selected_product)
+                            print("Ce produit n'est plus en stock")
+                    else:
+                        print("Stock insuffisant")
 
             answer_user = input("Avez-vous fini ? (o/n) ")
             if answer_user == "o":
