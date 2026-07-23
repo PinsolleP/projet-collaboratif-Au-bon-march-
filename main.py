@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
 from au_bon_marche import *
 
 
@@ -29,22 +30,40 @@ def store():
     warehouse = Warehouse()
 
     for item in stock_initial:
-        warehouse.add_product(product(*item))
+        warehouse.add_product(Products(*item))
 
     return warehouse
 
 
 if __name__ == "__main__":
+    warehouse = store()
     end_day = False
-    finish_purchase = False
+
     while not end_day:
         first_name = input("Entrer votre prénom: ")
         last_name = input("Entrer votre nom: ")
-        client = Clients(first_name, last_name)
+        client = Clients(last_name, first_name)
+        finish_purchase = False
         while not finish_purchase:
-            for product in store():
-                Warehouse.display_products(product)
+            warehouse.display_products()
             client_purchase = input("Que voulez vous acheter ? ")
-            client_quantity = int(input("Combien en voulez vous ? "))
-            Shoppingcart.add_line(store, client_purchase, client_quantity)
+            selected_product = None
+            for products in warehouse.products:
+                if products.name.lower() == client_purchase.lower():
+                    selected_product = products
+                    break
+            if selected_product is None:
+                print("Produit inconnu")
+            else:
+                quantity = int(input("Combien en voulez vous ? "))
+                if quantity <= selected_product.stock:
+                    client.basket.add_line(selected_product, quantity)
+                    selected_product.decrease_stock(quantity)
+                    print("Produit ajouté au panier")
+                else:
+                    print("Stock insuffisant")
+
+                answer = input("Terminer les achats ? (o/n)")
+                if answer.lower == "0":
+                    finish_purchase = True
 
