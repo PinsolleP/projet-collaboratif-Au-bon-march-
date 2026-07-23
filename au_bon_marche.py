@@ -13,6 +13,11 @@ class Products:
     def display_product(self):
         return f"L'article {self.name} existant en {self.stock} exemplaire(s) coute {self.price} / {self.unity}"
 
+    def check_quantity(self, quantity):
+        if self.unity == "pièce" and quantity != int(quantity):
+            return False
+        return True
+
 
 class Shoppingcartline:
     """Représente une ligne dans le panier (produit + quantité)."""
