@@ -8,7 +8,7 @@ class Products:
 
     def decrease_stock(self, quantity):
         self.stock -= quantity
-        return self.stock
+        return round(self.stock, 2)
 
     def display_product(self):
         return f"L'article {self.name} existant en {self.stock} exemplaire(s) coute {self.price} / {self.unity}"
