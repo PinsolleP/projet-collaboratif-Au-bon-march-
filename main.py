@@ -71,6 +71,7 @@ if __name__ == "__main__":
 
             answer_user = input("Avez-vous fini ? (o/n) ")
             if answer_user == "o":
+                print("=====TICKET DE CAISSE=====")
                 client.basket.display_lines()
                 finish_purchase = True
                 warehouse.add_client(client)
