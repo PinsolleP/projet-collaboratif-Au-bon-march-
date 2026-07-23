@@ -37,11 +37,11 @@ def store():
 if __name__ == "__main__":
     end_day = False
     finish_purchase = False
-    while end_day is False:
+    while not end_day:
         first_name = input("Entrer votre prénom: ")
         last_name = input("Entrer votre nom: ")
         client = Clients(first_name, last_name)
-        while finish_purchase is False:
+        while not finish_purchase:
             for product in store():
                 Warehouse.display_products(product)
             client_purchase = input("Que voulez vous acheter ? ")
